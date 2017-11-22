@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 mdl-auth-form">
+    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 mdl-auth-form"  style="background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);">
         <main class="mdl-layout__content_auth">
             <div class="mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">

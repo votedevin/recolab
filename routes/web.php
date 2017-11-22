@@ -17,6 +17,9 @@
 //Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::get('/', 'IndexController@index');
 
+Route::get('/admin', function () {
+    return redirect('/login');
+});
 // Authentication Routes
 Auth::routes();
 

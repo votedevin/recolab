@@ -55,8 +55,6 @@
                     <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white entity" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons">account_balance</i> Entity
                     </button>
-                    <div class="modal"><!-- Place at bottom of page --></div>
-
                     <!-- <div class="load-screen" style="display: none;">
                         <div class="sk-fading-circle" style="margin-top: 10px;">
                             <div class="sk-circle1 sk-circle"></div>
@@ -98,42 +96,8 @@
 @endsection
 
 @section('footer_scripts')
-<style>
-
-.modal {
-    display:    none;
-    position:   fixed;
-    z-index:    1000;
-    top:        0;
-    left:       0;
-    height:     100%;
-    width:      100%;
-    background: rgba( 255, 255, 255, .8 ) 
-                url('http://i.stack.imgur.com/FhHRx.gif') 
-                50% 50% 
-                no-repeat;
-}
-
-/* When the body has the loading class, we turn
-   the scrollbar off with overflow:hidden */
-body.loading {
-    overflow: hidden;   
-}
-
-/* Anytime the body has the loading class, our
-   modal element will be visible */
-body.loading .modal {
-    display: block;
-}
-</style>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
-    $body = $("body");
-
-    $(document).on({
-        ajaxStart: function() { $body.addClass("loading");    },
-         ajaxStop: function() { $body.removeClass("loading"); }    
-    });
     $( document ).ready(function() {
         $('.entity').click(function() {
             $.ajax({
