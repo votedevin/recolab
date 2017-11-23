@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 600;
   color: #37404d;
   letter-spacing: 1px;
-  line-height: 1.6;
+  line-height: 1;
 }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
@@ -2582,7 +2582,7 @@ button:focus {
   background-color: #0facf3;
   color: #fff;
   border-radius: 50%;
-  opacity: 0;
+  opacity: 10;
   z-index: 980;
   -webkit-box-shadow: 0 3px 15px rgba(15, 172, 243, 0.4);
           box-shadow: 0 3px 15px rgba(15, 172, 243, 0.4);
@@ -4096,7 +4096,7 @@ textarea.form-control-sm {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 1px solid #fff;
+  border: 0px solid #fff;
   opacity: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;

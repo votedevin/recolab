@@ -8,7 +8,7 @@
 
     <!-- Styles -->
     <link href="assets/css/core.min.css" rel="stylesheet">
-    <link href="assets/css/thesaas.min.css" rel="stylesheet">
+    <link href="assets/css/thesaas.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- Favicons -->

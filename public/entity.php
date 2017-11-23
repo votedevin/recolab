@@ -129,7 +129,7 @@
 								echo '</li>';
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
-								$description = str_replace("'","\'",$record['fields']['Description']);
+								$description = str_replace('"','\"','$record['fields']['Description']');
 								$phase = implode(",", $record['fields']['Phase']);
 								$facets = implode(",", $record['fields']['Facets']);
 								$entities = implode(",", $record['fields']['Entities']);

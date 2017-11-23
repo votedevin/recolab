@@ -59,75 +59,35 @@
 
           <div class="row gap-y text-center"  data-shuffle="list">
             
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0" data-shuffle="item" data-groups="box">
-              <a class="portfolio-1" href="demo-helpato.html">
-                <img class="shadow-2 hover-shadow-5" src="assets/img/demo-helpato-sm.jpg" alt="demo helpato landing">
-                <div class="portfolio-details" style="height: 100%;">
-                    <div class="row" style="height: 60%;">
-                      <div class="col-md-6" style="padding-top: 20%">
-                        <h5>Facets</h5>
-                      </div>
-                      <div class="col-md-6" style="padding-top: 20%">
-                        <h5>Entities</h5>
-                      </div>
+             @foreach($entites as $entity)
+            <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="box">
+              <a class="portfolio-1">
+                <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-color:  #2196F3;">
+                  <h3><strong>{{$entity->name}}</strong></h3>
+                  <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 15px;">Type</button>
+                  <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
+                  
+                </div>
+                <!-- <div class="portfolio-details" style="height: 100%;">
+                  <div class="row" style="height: 60%;margin:0; ">
+                    <div class="col-md-6" style="padding-top: 17%; background-color: #FFD180;">
+                      <h5>Facets</h5>
                     </div>
-                    <div class="text-center" style="height: 20%;">
-                      <h5>Links</h5>
+                    <div class="col-md-6" style="padding-top: 17%; background-color: #1DE9B6;">
+                      <h5>Entities</h5>
                     </div>
-                    <div class="text-center" style="height: 20%;"><h5>More Details</h5></div>
                   </div>
+                  <div class="text-center" style="height: 20%; background-color: #00bcd4;padding-top: 2%;">
+                    <h5>Links</h5>
+                  </div>
+                  <div class="text-center" style="height: 20%; background-color: #009495;padding-top: 2%;">
+                    <h5>More Details</h5>
+                  </div>
+                </div> -->
               </a>
-              <p><strong>Helpato</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150" data-shuffle="item" data-groups="book">
-              <p><a href="demo-trello.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-trello-sm.jpg" alt="demo helpato landing"></a></p>
               <p><strong>Trello</strong></p>
             </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300" data-shuffle="item" data-groups="box">
-              <p><a href="demo-gmail.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-gmail-sm.jpg" alt="demo helpato landing"></a></p>
-              <p><strong>Gmail</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0" data-shuffle="item" data-groups="bottle">
-              <p><a href="demo-skype.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-skype-sm.jpg" alt="demo helpato landing"></a></p>
-              <p><strong>Skype</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150" data-shuffle="item" data-groups="bottle">
-              <p><a href="demo-github.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-github-sm.jpg" alt="demo github landing"></a></p>
-              <p><strong>GitHub</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300" data-shuffle="item" data-groups="bag">
-              <p><a href="demo-app.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-app-sm.jpg" alt="demo app landing"></a></p>
-              <p><strong>Mobile App</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0" data-shuffle="item" data-groups="bottle">
-              <p><a href="demo-bootstrap.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-bootstrap-sm.jpg" alt="demo bootstrap landing"></a></p>
-              <p><strong>Bootstrap</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4 hidden-sm-down" data-aos="fade-up" data-aos-delay="150" data-shuffle="item" data-groups="book">
-              <p><a href="demo-slack.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-slack-sm.jpg" alt="demo slack landing"></a></p>
-              <p><strong>Slack</strong></p>
-            </div>
-
-
-            <div class="col-12 col-md-6 col-lg-4 hidden-sm-down" data-aos="fade-up" data-aos-delay="300" data-shuffle="item" data-groups="book">
-              <p><a href="demo-zendesk.html"><img class="shadow-2 hover-shadow-5" src="assets/img/demo-zendesk-sm.jpg" alt="demo zendesk landing"></a></p>
-              <p><strong>Zendesk</strong></p>
-            </div>
-
+            @endforeach
           </div>
 
 
@@ -138,6 +98,7 @@
     <!-- END Main container -->
 
 @include('layouts.footer')
+    <a class="scroll-top" href="#"><i class="fa fa-angle-up"></i></a>
 @include('layouts.script')
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

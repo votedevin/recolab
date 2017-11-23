@@ -5,13 +5,14 @@
         <div class="topbar-left">
           <button class="topbar-toggler">&#9776;</button>
           <a class="topbar-brand" href="index.html">
-            <img class="logo-default" src="assets/img/logo.png" alt="logo">
-            <img class="logo-inverse" src="assets/img/logo-light.png" alt="logo">
+            <!-- <img class="logo-default" src="assets/img/logo.png" alt="logo">
+            <img class="logo-inverse" src="assets/img/logo-light.png" alt="logo"> -->
+            <p class="fs-30 hidden-sm-down" style="color:#ffffff;"><strong>ReCoLab</strong></p>
           </a>
         </div>
 
 
-        <div class="topbar-right">
+        <!-- <div class="topbar-right">
           <ul class="topbar-nav nav">
             <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
             <li class="nav-item">
@@ -120,7 +121,7 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
 
       </div>
     </nav>
