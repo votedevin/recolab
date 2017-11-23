@@ -20,7 +20,7 @@ class IndexController extends Controller
     {
     	// DB::table('commitments')->leftJoin('agencies', 'commitments.managingagency', '=', 'agency_recordid')->leftJoin('projects', 'commitments.projectid', '=', 'project_recordid')->select('commitments.id','commitments.projectid','agencies.magency','agencies.magencyname','projects.project_projectid','commitments.plancommdate','commitments.budgetline','commitments.fmsnumber','commitments.description','commitments.commitmentcode','commitments.citycost','commitments.noncitycost')->paginate(20);
      //    $mainmenu = DB::table('menu_main')->value('menu_main_label');
-    	$entites = DB::table('entity')->get();
+    	$entites = DB::table('entity')->paginate(9);
         return view('frontend.index', compact('entites'));
     }
 

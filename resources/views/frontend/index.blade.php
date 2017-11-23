@@ -56,41 +56,45 @@
             </div>
             
             <br><br>
-
+          <div class="infinite-scroll">  
           <div class="row gap-y text-center"  data-shuffle="list">
-            
+          
              @foreach($entites as $entity)
-            <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="box">
-              <a class="portfolio-1">
-                <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-color:  #2196F3;">
-                  <h3><strong>{{$entity->name}}</strong></h3>
-                  <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 15px;">Type</button>
-                  <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
-                  
-                </div>
-                <!-- <div class="portfolio-details" style="height: 100%;">
-                  <div class="row" style="height: 60%;margin:0; ">
-                    <div class="col-md-6" style="padding-top: 17%; background-color: #FFD180;">
-                      <h5>Facets</h5>
+              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="box">
+                <a class="portfolio-1">
+                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-color:  #2196F3;">
+                    <h3><strong>{{$entity->name}}</strong></h3>
+                    <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 15px;">Type</button>
+                    <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
+                    
+                  </div>
+                  <!-- <div class="portfolio-details" style="height: 100%;">
+                    <div class="row" style="height: 60%;margin:0; ">
+                      <div class="col-md-6" style="padding-top: 17%; background-color: #FFD180;">
+                        <h5>Facets</h5>
+                      </div>
+                      <div class="col-md-6" style="padding-top: 17%; background-color: #1DE9B6;">
+                        <h5>Entities</h5>
+                      </div>
                     </div>
-                    <div class="col-md-6" style="padding-top: 17%; background-color: #1DE9B6;">
-                      <h5>Entities</h5>
+                    <div class="text-center" style="height: 20%; background-color: #00bcd4;padding-top: 2%;">
+                      <h5>Links</h5>
                     </div>
-                  </div>
-                  <div class="text-center" style="height: 20%; background-color: #00bcd4;padding-top: 2%;">
-                    <h5>Links</h5>
-                  </div>
-                  <div class="text-center" style="height: 20%; background-color: #009495;padding-top: 2%;">
-                    <h5>More Details</h5>
-                  </div>
-                </div> -->
-              </a>
-              <p><strong>Trello</strong></p>
-            </div>
-            @endforeach
+                    <div class="text-center" style="height: 20%; background-color: #009495;padding-top: 2%;">
+                      <h5>More Details</h5>
+                    </div>
+                  </div> -->
+                </a>
+              </div>
+              @endforeach
+              <div class="row text-center">
+                <ul class="pagination">
+                {{ $entites->links() }}
+                </ul>
+              </div>
+
           </div>
-
-
+        </div>
         </div>
       </section>
 
@@ -102,6 +106,7 @@
 @include('layouts.script')
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery.jscroll.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $('#filter_button').toggle();
@@ -109,5 +114,20 @@ $(document).ready(function(){
     $('#filter_button').toggle();
   });
 });
+</script>
+<script type="text/javascript">
+    $('ul.pagination').hide();
+    $(function() {
+        $('.infinite-scroll').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<img class="center-block" src="images/loader.gif" alt="Loading..." />',
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
+            callback: function() {
+                $('ul.pagination').remove();
+            }
+        });
+    });
 </script>
 </html>
