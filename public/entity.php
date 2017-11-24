@@ -1,4 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Airtable</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesheet.css" />		
+	</head>
+
+	<body>	
 	
+		<div class="page-wrapper">
+	
+			<div class="header-wrapper">	
+				<h1>Airtable->MySQL</h1>
+				<a href="/datasync" style="font-size: 25px; color: #00B9E6;     text-decoration: underline;">Back</a>
+			</div>
+		
+			<div class="content-wrapper">
+		
+				<ul>
+		
 					<?php
 						//dbconnet
 						$servername = "localhost";
@@ -129,7 +150,7 @@
 								echo '</li>';
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
-								$description = str_replace('"','\"','$record['fields']['Description']');
+								$description = str_replace("'","\'",$record['fields']['Description']);
 								$phase = implode(",", $record['fields']['Phase']);
 								$facets = implode(",", $record['fields']['Facets']);
 								$entities = implode(",", $record['fields']['Entities']);
@@ -137,6 +158,8 @@
 								$geographic_reach = implode(",", $record['fields']['Geographic Reach']);
 								$locations = implode(",", $record['fields']['Locations']);
 								$resources = implode(",", $record['fields']['Resources']);
+								$internal_notes= str_replace("'","\'", $record['fields']['Internal Notes']);
+								$slug= str_replace("'","\'", $record['fields']['Slug']);
 								$url = '';
 								$small='';
 								$large='';
@@ -156,9 +179,11 @@
 									} catch (Exception $e) {
 										echo 'Caught exception: ',  $e->getMessage(), "\n";
 									}
+								// $sql = "INSERT INTO entity (entity_id, name, description, type, phase, facets, entities, status, usability, website, get_involved,  rss, twitter, images_url, images_small, images_large, geographic_reach, locations, abbreviation, resources, additional_information, internal_notes, date_added, slug, iid, uid, source, source_date_added)
+								// VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$record['fields']['Website']}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$record['fields']['Internal Notes']}', '{$record['fields']['Date Added']}', '{$record['fields']['Slug']}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
 								}
 								$sql = "INSERT INTO entity (entity_id, name, description, type, phase, facets, entities, status, usability, website, get_involved,  rss, twitter, images_url, images_small, images_large, geographic_reach, locations, abbreviation, resources, additional_information, internal_notes, date_added, slug, iid, uid, source, source_date_added)
-								VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$record['fields']['Website']}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$record['fields']['Internal Notes']}', '{$record['fields']['Date Added']}', '{$record['fields']['Slug']}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$record['fields']['Website']}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$internal_notes}', '{$record['fields']['Date Added']}', '{$slug}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
@@ -173,5 +198,14 @@
 						curl_close( $ch );
 
 		
-									
+					?>				
 	
+				</ul>
+		
+			</div>
+		
+		</div>
+		
+	</body>
+	
+</html>

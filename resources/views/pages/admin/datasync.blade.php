@@ -73,7 +73,7 @@
                     </div> -->
                 </div>
                 <div class="itemBox" vertical="" layout="" center="" style="margin-bottom: 10px;">
-                    <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white factes" style="width: 140px;">
+                    <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white facets" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons">import_contacts</i> Facets
                     </button>
                 </div>
@@ -103,24 +103,27 @@
             $.ajax({
                 type: "GET",
                 url : 'entity.php'
+            });
         });
         $('.facets').click(function() {
             $.ajax({
                 type: "GET",
                 url : 'facets.php'
+            });
         });
         $('.resources').click(function() {
             $.ajax({
                 type: "GET",
-                url : 'facets.php'
+                url : 'resources.php'
+            });
         });
-        $('.location').click(function() {
+        $('.locations').click(function() {
             $.ajax({
                 type: "GET",
-                url : 'facets.php'
+                url : 'locations.php'
+            });
         });
     });
-
 </script>
 
 @endsection

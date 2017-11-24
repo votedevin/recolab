@@ -4,6 +4,11 @@
 <title>Index</title>
 
 @include('layouts.style')
+<style>
+  .jscroll-loading{
+    text-align: center;
+  } 
+</style>
   <body>
   @include('layouts.topbar')
 
@@ -61,10 +66,10 @@
           
              @foreach($entites as $entity)
               <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="box">
-                <a class="portfolio-1">
-                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-color:  #2196F3;">
+                <a class="portfolio">
+                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-image: linear-gradient(rgb(135, 224, 253) 0%, rgb(83, 203, 241) 40%, rgb(5, 171, 224) 100%);">
                     <h3><strong>{{$entity->name}}</strong></h3>
-                    <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 15px;">Type</button>
+                    <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
                     <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
                     
                   </div>

@@ -149,6 +149,7 @@
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
 								$description = str_replace("'","\'",$record['fields']['Description']);
+								$link = str_replace("'","\'",$record['fields']['Link']);
 								$status= str_replace("'","\'",$record['fields']['Status']);
 								$facets = implode(",", $record['fields']['Facets']);
 								$entities = implode(",", $record['fields']['Entities']);
@@ -159,7 +160,7 @@
 								}
 
 								$sql = "INSERT INTO resources (resources_id, name, type, description, link, processing_notes, status, facets, entities, referral_note,  attachment, notes)
-								VALUES ( '{$record['id']}', '{$name}', '{$record['fields']['Type']}', '{$description}', '{$record['fields']['Link']}', '{$record['fields']['Processing Notes']}', '{$status}', '{$facets}', '{$entities}', '{$record['fields']['Referral Note']}', '{$attachment}', '{$record['fields']['Notes']}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$record['fields']['Type']}', '{$description}', '{$link}', '{$record['fields']['Processing Notes']}', '{$status}', '{$facets}', '{$entities}', '{$record['fields']['Referral Note']}', '{$attachment}', '{$record['fields']['Notes']}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
