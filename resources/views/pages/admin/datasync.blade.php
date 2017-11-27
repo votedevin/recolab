@@ -55,37 +55,33 @@
                     <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white entity" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons">account_balance</i> Entity
                     </button>
-                    <!-- <div class="load-screen" style="display: none;">
-                        <div class="sk-fading-circle" style="margin-top: 10px;">
-                            <div class="sk-circle1 sk-circle"></div>
-                            <div class="sk-circle2 sk-circle"></div>
-                            <div class="sk-circle3 sk-circle"></div>
-                            <div class="sk-circle4 sk-circle"></div>
-                            <div class="sk-circle5 sk-circle"></div>
-                            <div class="sk-circle6 sk-circle"></div>
-                            <div class="sk-circle7 sk-circle"></div>
-                            <div class="sk-circle8 sk-circle"></div>
-                            <div class="sk-circle9 sk-circle"></div>
-                            <div class="sk-circle10 sk-circle"></div>
-                            <div class="sk-circle11 sk-circle"></div>
-                            <div class="sk-circle12 sk-circle"></div>
-                          </div>
-                    </div> -->
+                    <p class="result1" style="display: inline;">
+                    <img class="title1 hidden" id="title" src="images/xpProgressBar.gif" alt="Loading..." />
+                    </p>
                 </div>
                 <div class="itemBox" vertical="" layout="" center="" style="margin-bottom: 10px;">
                     <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white facets" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons">import_contacts</i> Facets
                     </button>
+                    <p class="result2" style="display: inline;">
+                    <img class="title2 hidden" id="title" src="images/xpProgressBar.gif" alt="Loading..." />
+                    </p>
                 </div>
                 <div class="itemBox" vertical="" layout="" center="" style="margin-bottom: 10px;">
                     <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white resources" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons">business_center</i> Resources
                     </button>
+                    <p class="result3" style="display: inline;">
+                    <img class="title3 hidden" id="title" src="images/xpProgressBar.gif" alt="Loading..." />
+                    </p>
                 </div>
                 <div class="itemBox" vertical="" layout="" center="">
                     <button itemprop="item" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white locations" style="width: 140px;">
                         <i class="mdl-color-text--blue-white-400 material-icons dp48">place</i> Locations
                     </button>
+                    <p class="result4" style="display: inline;">
+                    <img class="title4 hidden" id="title" src="images/xpProgressBar.gif" alt="Loading..." />
+                    </p>
                 </div>
             </div>
         </div>
@@ -96,31 +92,56 @@
 @endsection
 
 @section('footer_scripts')
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
         $('.entity').click(function() {
+            $('.title1').removeClass('hidden');
             $.ajax({
                 type: "GET",
-                url : 'entity.php'
+                url : 'entity.php',
+                success: function(result){
+                $(".title1").addClass('hidden');
+                $(".result1").html("Success");
+                }
             });
         });
         $('.facets').click(function() {
+            $('.title2').removeClass('hidden');
             $.ajax({
                 type: "GET",
-                url : 'facets.php'
+                url : 'facets.php',
+                success: function(result){
+                $(".title2").addClass('hidden');
+                $(".result2").html("Success");
+                }
             });
         });
         $('.resources').click(function() {
+            $('.title3').removeClass('hidden');
             $.ajax({
                 type: "GET",
-                url : 'resources.php'
+                url : 'resources.php',
+                success: function(result){
+                $(".title3").addClass('hidden');
+                $(".result3").html("Success");
+                }
             });
         });
         $('.locations').click(function() {
+            $('.title4').removeClass('hidden');
             $.ajax({
                 type: "GET",
-                url : 'locations.php'
+                url : 'locations.php',
+                success: function(result){
+                $(".title4").addClass('hidden');
+                $(".result4").html("Success");
+                }
             });
         });
     });
