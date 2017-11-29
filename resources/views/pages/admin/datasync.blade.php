@@ -107,29 +107,29 @@
                 url : 'entity.php',
                 success: function(result){
                 $(".title1").addClass('hidden');
-                $(".result1").html("Success");
+                $(".result1").html("Updated");
                 }
             });
         });
         $('.facets').click(function() {
-            $('.title2').removeClass('hidden');
+            $('.title2').removeClass('Updated');
             $.ajax({
                 type: "GET",
                 url : 'facets.php',
                 success: function(result){
                 $(".title2").addClass('hidden');
-                $(".result2").html("Success");
+                $(".result2").html("Updated");
                 }
             });
         });
         $('.resources').click(function() {
-            $('.title3').removeClass('hidden');
+            $('.title3').removeClass('Updated');
             $.ajax({
                 type: "GET",
                 url : 'resources.php',
                 success: function(result){
                 $(".title3").addClass('hidden');
-                $(".result3").html("Success");
+                $(".result3").html("Updated");
                 }
             });
         });
@@ -140,7 +140,7 @@
                 url : 'locations.php',
                 success: function(result){
                 $(".title4").addClass('hidden');
-                $(".result4").html("Success");
+                $(".result4").html("Updated");
                 }
             });
         });

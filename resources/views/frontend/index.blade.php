@@ -9,8 +9,6 @@
     text-align: center;
   } 
 </style>
-<link href="css/reset.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
   <body>
   @include('layouts.topbar')
 
@@ -46,51 +44,90 @@
     <!-- END Header -->
 
     <!-- Main container -->
- 
+    <main class="main-content">
 
-
-
-
-            <div class="controls">
-              <button type="button" class="control" data-filter="all">All</button>
-              <button type="button" class="control" data-toggle=".red"></button>
-              <button type="button" class="control" data-toggle=".blue">Blue</button>
-              <button type="button" class="control" data-toggle=".pink">Pink</button>
-              
+      <section class="section overflow-hidden" id="section-demo" style="padding-top: 0;">
+        <div class="container">
+          <div data-provide="shuffle" id="shuffle">
+            <div class="row text-center">
+            <button id="searchbutton" class="btn btn-round btn-white" style="font-size: 20px;border: 0;"><i class="fa fa-sliders"></i> Filter</button>
             </div>
-            <div class="container">
-              <div class="mix green"></div>
-              <div class="mix green">55555555</div>
-              <div class="mix blue"></div>
-              <div class="mix pink"></div>
-              <div class="mix green"></div>
-              <div class="mix blue"></div>
-              <div class="mix pink"></div>
-              <div class="mix blue"></div>
-
-              <div class="gap"></div>
-              <div class="gap"></div>
-              <div class="gap"></div>
+            <div class="text-center gap-multiline-items-2 controls" id="filter_button" data-shuffle="filter">
+              <button class="btn btn-outline btn-info active">All</button>
+              @foreach($entity_types as $entity_type)
+              <button class="btn btn-outline btn-info entity_type" class="control" data-group="{{$entity_type->type}}">{{$entity_type->type}}</button>
+              @endforeach
             </div>
+            
+            <br><br>
+          <div class="infinite-scroll">  
+          <div class="row gap-y text-center"  data-shuffle="list">
+          
+             @foreach($entites as $entity)
+              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
+                <a class="portfolio">
+                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-image: linear-gradient(rgb(135, 224, 253) 0%, rgb(83, 203, 241) 40%, rgb(5, 171, 224) 100%);">
+                    <h3><strong>{{$entity->name}}</strong></h3>
+                    <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
+                    <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
+                    
+                  </div>
+                  <!-- <div class="portfolio-details" style="height: 100%;">
+                    <div class="row" style="height: 60%;margin:0; ">
+                      <div class="col-md-6" style="padding-top: 17%; background-color: #FFD180;">
+                        <h5>Facets</h5>
+                      </div>
+                      <div class="col-md-6" style="padding-top: 17%; background-color: #1DE9B6;">
+                        <h5>Entities</h5>
+                      </div>
+                    </div>
+                    <div class="text-center" style="height: 20%; background-color: #00bcd4;padding-top: 2%;">
+                      <h5>Links</h5>
+                    </div>
+                    <div class="text-center" style="height: 20%; background-color: #009495;padding-top: 2%;">
+                      <h5>More Details</h5>
+                    </div>
+                  </div> -->
+                </a>
+              </div>
+              @endforeach
+              <!--  -->
+              <div class="row text-center">
+                <ul class="pagination">
+                {{ $entites->links() }}
+                </ul>
+              </div>
 
+          </div>
+        </div>
+        </div>
+      </section>
 
-
-  
+    </main>
     <!-- END Main container -->
 
 @include('layouts.footer')
     <a class="scroll-top" href="#"><i class="fa fa-angle-up"></i></a>
 @include('layouts.script')
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/jquery.jscroll.js"></script>
 <script src="js/mixitup.min.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#filter_button').toggle();
+  $('#searchbutton').click(function() {
+    $('#filter_button').toggle();
+  });
+});
+</script>
 <script>
   var containerEl = document.querySelector('.container');
 
   var mixer = mixitup(containerEl);
 </script>
-<!-- <script>
+<script>
     $('ul.pagination').hide();
     $(function() {
       $('.infinite-scroll').jscroll({
@@ -117,5 +154,5 @@
         //   });
         // });
     });
-</script> -->
+</script>
 </html>

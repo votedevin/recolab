@@ -158,9 +158,16 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function ()
 
 	//Data sync
 	Route::get('/datasync', ['uses' => 'DataSyncController@index']);
-	Route::get('/entity', ['uses' => 'DataSyncController@index']);
-	Route::get('/facets', ['uses' => 'DataSyncController@index']);
-	Route::get('/resources', ['uses' => 'DataSyncController@index']);
-	Route::get('/locations', ['uses' => 'DataSyncController@index']);
+
+	//Home Edit
+	Route::get('/home_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'PostsController@index'
+	]);
+
+	Route::any('upload', 'PostsController@upload');
+
+	// resource routes for posts
+	Route::resource('posts', 'PostsController');
 
 });

@@ -42,6 +42,10 @@
 			Create Task
 		</a> -->
 		@role('admin')
+			<a class="mdl-navigation__link {{ Request::is('home_edit') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/home_edit') }}">
+				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">mode_edit</i>
+				Home Edit
+			</a>
 			<a class="mdl-navigation__link {{ Request::is('datasync') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/datasync') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">perm_data_setting</i>
 				Data Sync
