@@ -66,11 +66,11 @@
           <div class="infinite-scroll">  
           <div class="row gap-y text-center"  data-shuffle="list">
           
-             @foreach($entites as $entity)
+             @foreach($entities as $entity)
               <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
                 <a class="portfolio">
                   <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(193,191,234,1) 100%);">
-                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;height: 20%;"><strong>{{$entity->name}}</strong></h3>
+                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$entity->name}}</strong></h3>
                     <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
                     <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($entity->description, 100)}}</p>
                       <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
@@ -88,7 +88,21 @@
                           @endif
                       </div>
                       <div class="row">
-                        <a class="fw-600 fs-12" href="#" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        <a class="fw-600 fs-12" href="/entity_{{$entity->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                      </div>
+                  </div> 
+                </a>
+              </div>
+              @endforeach
+              @foreach($facets as $facet)
+              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
+                <a class="portfolio">
+                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
+                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$facet->name}}</strong></h3>
+                    <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$facet->type}}</button>
+                    <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($facet->description, 100)}}</p>
+                      <div class="row">
+                        <a class="fw-600 fs-12" href="/facet_{{$facet->id}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                       </div>
                   </div> 
                 </a>
@@ -97,7 +111,7 @@
               <!--  -->
               <div class="row text-center">
                 <ul class="pagination">
-                {{ $entites->links() }}
+                {{ $facets->links() }}
                 </ul>
               </div>
 

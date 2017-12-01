@@ -149,11 +149,11 @@
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
 								$description = str_replace("'","\'",$record['fields']['Description']);
-								$facets = implode(",", $record['fields']['Facets']);
-								$entities = implode(",", $record['fields']['Entities']);
-								$resources = implode(",", $record['fields']['Resources']);
-								$locations = implode(",", $record['fields']['Locations']);
-								$resources = implode(",", $record['fields']['Resources']);
+								$facets = implode(", ", $record['fields']['Facets']);
+								$entities = implode(", ", $record['fields']['Entities']);
+								$resources = implode(", ", $record['fields']['Resources']);
+								$locations = implode(", ", $record['fields']['Locations']);
+								$resources = implode(", ", $record['fields']['Resources']);
 								
 								$sql = "INSERT INTO facets (facets_id, name, type, description, facets, entities, source, resources, slug, importance)
 								VALUES ( '{$record['id']}', '{$name}', '{$record['fields']['Type']}', '{$description}', '{$facets}', '{$entities}', '{$record['fields']['Source']}', '{$resources}', '{$record['fields']['Slug']}', '{$record['fields']['Importance']}');";

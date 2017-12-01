@@ -20,6 +20,10 @@ Route::get('/', 'IndexController@index');
 Route::get('/admin', function () {
     return redirect('/login');
 });
+//entity link
+Route::get('entity_{id}', 'IndexController@entity_link');
+
+Route::get('facet_{id}', 'IndexController@facet_link');
 
 Route::get('entitytype', 'IndexController@entitytype');
 // Authentication Routes
