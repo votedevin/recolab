@@ -99,7 +99,7 @@
                 <a class="portfolio">
                   <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
                     <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$facet->name}}</strong></h3>
-                    <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$facet->type}}</button>
+                    <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #43cea2 0%, #185a9d 100%);">{{$facet->type}}</button>
                     <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($facet->description, 100)}}</p>
                       <div class="row">
                         <a class="fw-600 fs-12" href="/facet_{{$facet->id}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
