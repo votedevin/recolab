@@ -7,6 +7,9 @@
 <style>
   .jscroll-loading{
     text-align: center;
+  }
+  .hover-shadow-5:hover, .portfolio-2 img:hover {
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.5);
   } 
 </style>
   <body>
@@ -52,10 +55,10 @@
             <div class="row text-center">
             <button id="searchbutton" class="btn btn-round btn-white" style="font-size: 20px;border: 0;"><i class="fa fa-sliders"></i> Filter</button>
             </div>
-            <div class="text-center gap-multiline-items-2 controls" id="filter_button" data-shuffle="filter">
-              <button class="btn btn-outline btn-info active">All</button>
+            <div class="text-center gap-multiline-items-2" id="filter_button" data-shuffle="filter">
+              <button class="btn btn-outline btn-info active" data-shuffle="button">All</button>
               @foreach($entity_types as $entity_type)
-              <button class="btn btn-outline btn-info entity_type" class="control" data-group="{{$entity_type->type}}">{{$entity_type->type}}</button>
+              <button class="btn btn-outline btn-info" data-shuffle="button" data-group="{{$entity_type->type}}">{{$entity_type->type}}</button>
               @endforeach
             </div>
             
@@ -66,28 +69,28 @@
              @foreach($entites as $entity)
               <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
                 <a class="portfolio">
-                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 255px; background-image: linear-gradient(rgb(135, 224, 253) 0%, rgb(83, 203, 241) 40%, rgb(5, 171, 224) 100%);">
-                    <h3><strong>{{$entity->name}}</strong></h3>
+                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(193,191,234,1) 100%);">
+                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;height: 20%;"><strong>{{$entity->name}}</strong></h3>
                     <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
-                    <p class="card-text" style="color: white;font-weight: 600;">{{str_limit($entity->description, 100)}}</p>
-                    
-                  </div>
-                  <!-- <div class="portfolio-details" style="height: 100%;">
-                    <div class="row" style="height: 60%;margin:0; ">
-                      <div class="col-md-6" style="padding-top: 17%; background-color: #FFD180;">
-                        <h5>Facets</h5>
+                    <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($entity->description, 100)}}</p>
+                      <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
+                          @if($entity->website!='')
+                            <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
+                          @endif
+                          @if($entity->get_involved!='')
+                            <a class="btn btn-sm btn-circular btn-warning" href="//{{$entity->get_involved}}" style="margin-right: 3px;"><img src="images/engage-involved-join-participate-share-37d5c530994f0c8a-512x512.png" width="30" height="30"></a></i></a>
+                          @endif
+                          @if($entity->rss!='')
+                            <a class="social-rss btn btn-sm btn-circular btn-danger" href="//{{$entity->rss}}" style="margin-right: 3px;"><i class="fa fa-rss"></i></a>
+                          @endif
+                          @if($entity->twitter!='')
+                            <a class="btn btn-sm btn-circular btn-primary social-twitter" href="//{{$entity->twitter}}" style="margin-right: 3px;"><i class="fa fa-twitter"></i></a>
+                          @endif
                       </div>
-                      <div class="col-md-6" style="padding-top: 17%; background-color: #1DE9B6;">
-                        <h5>Entities</h5>
+                      <div class="row">
+                        <a class="fw-600 fs-12" href="#" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                       </div>
-                    </div>
-                    <div class="text-center" style="height: 20%; background-color: #00bcd4;padding-top: 2%;">
-                      <h5>Links</h5>
-                    </div>
-                    <div class="text-center" style="height: 20%; background-color: #009495;padding-top: 2%;">
-                      <h5>More Details</h5>
-                    </div>
-                  </div> -->
+                  </div> 
                 </a>
               </div>
               @endforeach
@@ -113,7 +116,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/jquery.jscroll.js"></script>
-<script src="js/mixitup.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $('#filter_button').toggle();
@@ -121,11 +123,6 @@ $(document).ready(function(){
     $('#filter_button').toggle();
   });
 });
-</script>
-<script>
-  var containerEl = document.querySelector('.container');
-
-  var mixer = mixitup(containerEl);
 </script>
 <script>
     $('ul.pagination').hide();

@@ -155,6 +155,8 @@
 								$facets = implode(",", $record['fields']['Facets']);
 								$entities = implode(",", $record['fields']['Entities']);
 								$status= str_replace("'","\'",$record['fields']['Status']);
+								$website = str_replace("https://","",$record['fields']['Website']);
+								$website = str_replace("http://","",$website);
 								$geographic_reach = implode(",", $record['fields']['Geographic Reach']);
 								$locations = implode(",", $record['fields']['Locations']);
 								$resources = implode(",", $record['fields']['Resources']);
@@ -183,7 +185,7 @@
 								// VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$record['fields']['Website']}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$record['fields']['Internal Notes']}', '{$record['fields']['Date Added']}', '{$record['fields']['Slug']}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
 								}
 								$sql = "INSERT INTO entity (entity_id, name, description, type, phase, facets, entities, status, usability, website, get_involved,  rss, twitter, images_url, images_small, images_large, geographic_reach, locations, abbreviation, resources, additional_information, internal_notes, date_added, slug, iid, uid, source, source_date_added)
-								VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$record['fields']['Website']}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$internal_notes}', '{$record['fields']['Date Added']}', '{$slug}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
+								VALUES ( '{$record['id']}', '{$name}', '{$description}', '{$record['fields']['Type']}', '{$phase}', '{$facets}', '{$entities}', '{$status}', '{$record['fields']['Usability']}', '{$website}', '{$record['fields']['Get Involved']}', '{$record['fields']['RSS']}', '{$record['fields']['Twitter']}', '{$url}', '{$small}', '{$large}', '{$geographic_reach}', '{$locations}', '{$record['fields']['Abbreviation']}', '{$resources}', '{$record['fields']['Additional Information']}', '{$internal_notes}', '{$record['fields']['Date Added']}', '{$slug}', '{$record['fields']['IID']}', '{$record['fields']['UID']}', '{$record['fields']['Source']}', '{$record['fields']['Source Date Added']}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
