@@ -151,6 +151,7 @@
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
 								$description = str_replace("'","\'",$record['fields']['Description']);
+								$description =  mb_convert_encoding($description, "HTML-ENTITIES", "UTF-8");
 								$phase = implode(", ", $record['fields']['Phase']);
 								$facets = implode(", ", $record['fields']['Facets']);
 								$entities = implode(", ", $record['fields']['Entities']);

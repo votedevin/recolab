@@ -81,10 +81,10 @@
           <div class="row">
             <div class="col-12 col-lg-8">
               <div class="bg-lighter p-20">
-                <h3><strong>{{$facet->name}}</strong></h3>
-                <code><strong>{{$facet->type}}</strong></code>
+                <h3><strong>{{$resource->name}}</strong></h3>
+                <code><strong>{{$resource->type}}</strong></code>
                 <hr>
-                <p><strong>Description</strong> - {{$facet->description}}</p>
+                <p><strong>Description</strong> - {{$resource->description}}</p>
               </div>
             </div>
 

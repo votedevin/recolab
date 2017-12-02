@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('template_title')
-  Showing Themes
+  Data Sync
 @endsection
 
 @section('header')

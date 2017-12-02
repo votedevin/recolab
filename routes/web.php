@@ -25,6 +25,8 @@ Route::get('entity_{id}', 'IndexController@entity_link');
 
 Route::get('facet_{id}', 'IndexController@facet_link');
 
+Route::get('resource_{id}', 'IndexController@resource_link');
+
 Route::get('entitytype', 'IndexController@entitytype');
 // Authentication Routes
 Auth::routes();

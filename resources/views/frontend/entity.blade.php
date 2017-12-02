@@ -5,7 +5,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @include('layouts.style')
 <link href="https://raw.githubusercontent.com/kartik-v/bootstrap-star-rating/master/css/star-rating.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
   .jscroll-loading{
     text-align: center;
@@ -21,6 +20,9 @@
   }
   h3{
     font-family: "Open Sans";
+  }
+  a{
+    color: #0facf3 !important;
   }
 </style>
   <body>
@@ -82,7 +84,7 @@
                 <code><strong>{{$entity->type}}</strong></code>
                 <div class="row pl-20">
                 @foreach($facets as $facet)
-                  <p style="display: inline;">{{$facet->facets_name}}, </p>
+                  <a href="/facet_{{$facet->facets_id}}" style="display: inline;">{{$facet->facets_name}}, </a>
                 @endforeach
                 </div>
                 <div class="row" style="padding-top: 10px;padding-left: 20px;"> 
@@ -108,7 +110,12 @@
                 <p><strong>Maintenance</strong> - {{$entity->status}}</p>
                 <hr>
                 <p><strong>Geographic Research</strong></p>
-                <p>{{$entity->locations}} {{$entity->geographic_reach}}</p>
+                @if($entity->locations!='')
+                  @foreach($locations as $location)
+                    <p style="display: inline;">{{$location->name}}: {{$location->address}}</p>
+                  @endforeach
+                @endif
+                <p style="display: inline;">{{$entity->geographic_reach}}</p>
                 <hr>
                 <p><strong>Additional Info</strong></p>
               </div>
@@ -134,32 +141,54 @@
             @endphp
 
             <div class="col-12 col-lg-4">
+              @if($entity->images_url!='')
               <div class="bg-lighter p-20 mb-20">
-                <div class="w3-content w3-display-container">
-                  @foreach($images as $image)
-                  <img class="mySlides" src="{{$image}}" style="width:100%">
-                  @endforeach
-                  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                </div>
-              </div>
 
+                <div class="slideshow-container">
+                  @foreach($images as $image)
+                  @if($image!='')
+                  <div class="mySlides fade" style="opacity: 1;">
+                    
+                    <img src="{{$image}}" style="width:100%">
+                  </div>
+                  @endif
+                  @endforeach
+
+                </div>
+                  <br>
+
+                <div style="text-align:center">
+                  @foreach($images as $key => $image)
+                    @if($image!='')
+                    <span class="dot" onclick="currentSlide({{ $key + 1}})"></span> 
+                    @endif
+                  @endforeach
+                </div>
+
+              </div>
+              @endif
               <div class="bg-lighter p-20">
-                <p class="text-center"><strong>Entities</strong></p>
-                @foreach($sub_entities as $sub_entity)
-                  <p>{{$sub_entity->entity_name}} - {{$sub_entity->entity_type}}</p>
-                @endforeach
+                <p class="text-center"><strong>Entities</strong></p>             
+                  @foreach($sub_entities as $sub_entity)
+                    @if($sub_entity->entity_name!='')
+                      <p><a href="/entity_{{$sub_entity->entity_name}}">{{$sub_entity->entity_name}}</a> - <code>{{$sub_entity->entity_type}}</code></p>
+                    @endif
+                  @endforeach             
               <hr>
 
                 <p class="text-center"><strong>Facets</strong></p>
                   @foreach($sub_facets as $sub_facet)
-                    <p>{{$sub_facet->facets_name}} - {{$sub_facet->facets_type}}</p>
+                    @if($sub_facet->facets_name!='')
+                      <p><a href="facet_{{$sub_facet->facets_id}}">{{$sub_facet->facets_name}}</a> - <code>{{$sub_facet->facets_type}}</code></p>
+                    @endif
                   @endforeach
               <hr>
 
                 <p class="text-center"><strong>Resources</strong></p>
                   @foreach($sub_resources as $sub_resource)
-                    <p>{{$sub_resource->resources_name}} - {{$sub_resource->resources_type}}</p>
+                    @if($sub_resource->resources_name!='')
+                      <p><a href="resource_{{$sub_resource->resources_name}}">{{$sub_resource->resources_name}}</a> - <code>{{$sub_resource->resources_type}}</code></p>
+                    @endif
                   @endforeach
               </div>
             </div>
@@ -168,10 +197,11 @@
       </section>
     </main>
     <!-- END Main container -->
-    <a class="scroll-top" href="#"><i class="fa fa-angle-up"></i></a>
+    <a class="scroll-top" href="#"><i class="fa fa-angle-up" style="color: white;"></i></a>
 @include('layouts.script')
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/jquery.jscroll.js"></script>
 <script type="text/javascript">
@@ -200,21 +230,30 @@ $(document).ready(function(){
 </script>
 <script>
 var slideIndex = 1;
-showDivs(slideIndex);
+showSlides(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-function showDivs(n) {
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
   var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
   }
-  x[slideIndex-1].style.display = "block";  
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
 }
 </script>
 </html>
