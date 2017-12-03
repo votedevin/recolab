@@ -56,9 +56,12 @@
             <button id="searchbutton" class="btn btn-round btn-white" style="font-size: 20px;border: 0;"><i class="fa fa-sliders"></i> Filter</button>
             </div>
             <div class="text-center gap-multiline-items-2" id="filter_button" data-shuffle="filter">
-              <button class="btn btn-outline btn-info active" data-shuffle="button">All</button>
+              <a href="/" class="btn btn-outline btn-info entity_type">All</a>
               @foreach($entity_types as $entity_type)
-              <button class="btn btn-outline btn-info" data-shuffle="button" data-group="{{$entity_type->type}}">{{$entity_type->type}}</button>
+              <a href="type_{{$entity_type->type}}" class="btn btn-outline btn-info entity_type">{{$entity_type->type}}</a>
+              @endforeach
+              @foreach($facet_types as $facet_type)
+              <a href="type_{{$facet_type->type}}" class="btn btn-outline btn-info entity_type">{{$facet_type->type}}</a>
               @endforeach
             </div>
             
@@ -95,7 +98,7 @@
               </div>
               @endforeach
               @foreach($facets as $facet)
-              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
+              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$facet->type}}">
                 <a class="portfolio">
                   <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
                     <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$facet->name}}</strong></h3>
