@@ -114,6 +114,7 @@
               <!--  -->
               <div class="row text-center">
                 <ul class="pagination">
+                {{ $entities->links() }}
                 {{ $facets->links() }}
                 </ul>
               </div>
