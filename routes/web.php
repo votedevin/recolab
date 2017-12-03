@@ -28,6 +28,10 @@ Route::get('facet_{id}', 'IndexController@facet_link');
 Route::get('resource_{id}', 'IndexController@resource_link');
 
 Route::get('type_{id}', 'IndexController@type');
+
+Route::match(['get', 'post'], '/search_find', [
+    'uses'          => 'IndexController@search'
+]);
 // Authentication Routes
 Auth::routes();
 

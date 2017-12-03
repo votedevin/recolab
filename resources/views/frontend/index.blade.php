@@ -30,10 +30,11 @@
 
             <br>
             
-            <form class="form-inline form-glass form-round justify-content-center" action="" method="post" target="_blank">
+            <form class="form-inline form-glass form-round justify-content-center" action="/search_find" method="post">
               <div class="input-group" style="width: 50%">
                 <span class="input-group-addon"><i class="fa fa-search" style="font-size: 20px;"></i></span>
-                <input type="text" class="form-control" placeholder="Search ..." style="font-size: 20px;">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="text" class="form-control" placeholder="Search ..." style="font-size: 20px;" name="find"/>
               </div>
             </form>
           </div>

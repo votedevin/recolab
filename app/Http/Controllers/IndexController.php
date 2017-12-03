@@ -51,6 +51,18 @@ class IndexController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        $find = $request->input('find');
+        $posts = DB::table('posts')->first();
+        $entity_types = DB::table('entity')->distinct()-> get(['type']);
+        $facet_types = DB::table('facets')->distinct()-> get(['type']);
+        $entities = DB::table('entity')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(12);
+        $facets = DB::table('facets')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(12);
+        return view('frontend.index', compact('posts', 'entity_types', 'facet_types', 'entities', 'facets'));
+
+    }
+
     public function entity_link($id)
     {
 
