@@ -32,8 +32,8 @@ class IndexController extends Controller
         $entitytype = $request->all();
 
         $entity_types=DB::table('entity')->distinct()-> get(['type']);
-        $entities = DB::table('entity')->where('type', $entitytype)->paginate(12);
-        $facets=DB::table('facets')->where('type', $entitytype)->paginate(12);
+        $entities = DB::table('entity')->where('type', $entitytype)->paginate(3);
+        $facets=DB::table('facets')->where('type', $entitytype)->paginate(3);
         return Response()->json($entity_types, $entities, $facets);
         // return view('frontend.index', compact('entity_types', 'entities', 'facets'));
 
@@ -45,8 +45,8 @@ class IndexController extends Controller
         $posts=DB::table('posts')->first();
         $entity_types=DB::table('entity')->distinct()-> get(['type']);
         $facet_types=DB::table('facets')->distinct()-> get(['type']);
-        $entities = DB::table('entity')->where('type', $type)->paginate(12);
-        $facets=DB::table('facets')->where('type', $type)->paginate(12);
+        $entities = DB::table('entity')->where('type', $type)->paginate(3);
+        $facets=DB::table('facets')->where('type', $type)->paginate(3);
         return view('frontend.index', compact('posts', 'entity_types', 'facet_types', 'entities', 'facets'));
 
     }
@@ -57,8 +57,8 @@ class IndexController extends Controller
         $posts = DB::table('posts')->first();
         $entity_types = DB::table('entity')->distinct()-> get(['type']);
         $facet_types = DB::table('facets')->distinct()-> get(['type']);
-        $entities = DB::table('entity')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(12);
-        $facets = DB::table('facets')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(12);
+        $entities = DB::table('entity')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(3);
+        $facets = DB::table('facets')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(3);
         return view('frontend.index', compact('posts', 'entity_types', 'facet_types', 'entities', 'facets'));
 
     }
