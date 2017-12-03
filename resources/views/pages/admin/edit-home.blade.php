@@ -72,7 +72,7 @@
                            <!-- {{Form::label('body', 'Content')}}{{Form::textarea('body',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote'))}}--> 
                         </div>
                         <div class="form-group">
-                            {{Form::submit('Publish',array('class' => 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white locations'))}} </div>
+                            {{Form::submit('Publish',array('class' => 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-shadow--3dp mdl-button--raised mdl-button--primary mdl-color-text--white facets'))}} </div>
                         {{Form::close()}}
                         <script>
                             var content = <?php print_r(json_encode($post->body)) ?>;

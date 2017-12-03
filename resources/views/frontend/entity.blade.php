@@ -35,11 +35,11 @@
       <div class="container">
         <div class="row h-half">
           <div class="col-12 text-center align-self-center">
-            <h1 class="fs-50 fw-600 lh-15 hidden-sm-down">Built for <span class="text-primary" data-type="Authors, Startups, Entrepreneurs, SaaS, WebApps"></span></h1>
-            <h1 class="fs-35 fw-600 lh-15 hidden-md-up">Built for<br><span class="text-primary" data-type="Authors, Startups, Entrepreneurs, SaaS, WebApps"></span></h1>
+            <h1 class="fs-50 fw-600 lh-15 hidden-sm-down"><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
+            <h1 class="fs-35 fw-600 lh-15 hidden-md-up"><br><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
             <br>
-            <p class="fs-20 hidden-sm-down"><strong>TheSaaS</strong> is an elegant, modern and fully customizable SaaS and WebApp template</p>
-            <p class="fs-16 hidden-md-up"><strong>TheSaaS</strong> is an elegant, modern and fully customizable SaaS and WebApp template</p>
+            <p class="fs-20 hidden-sm-down">{!! $posts->body  !!}</p>
+            <p class="fs-16 hidden-md-up">{!! $posts->body  !!}</p>
 
             <br>
             

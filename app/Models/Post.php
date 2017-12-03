@@ -12,7 +12,4 @@ class Post extends Model
         'title' => 'required',
         'body' => 'required'
     );
-    protected $fillable = [
-		'files'
-	];
 }

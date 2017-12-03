@@ -2,8 +2,8 @@
 
 return [
 
-	'app'			=> 'Laravel MDL 2.0',
-	'app2'			=> 'Laravel MDL 2.0',
+	'app'			=> 'base.recola.org',
+	'app2'			=> 'base.recola.org',
 	'home'			=> 'Home',
 	'login'			=> 'Login',
 	'logout'		=> 'Logout',

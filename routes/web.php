@@ -171,9 +171,9 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function ()
 		'uses' 			=> 'PostsController@index'
 	]);
 
-	Route::any('upload', 'PostsController@upload');
-
 	// resource routes for posts
 	Route::resource('posts', 'PostsController');
+
+	Route::any('upload', 'PostsController@upload');
 
 });
