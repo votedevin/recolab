@@ -128,7 +128,6 @@
     </main>
     <!-- END Main container -->
 
-@include('layouts.footer')
     <a class="scroll-top" href="#"><i class="fa fa-angle-up"></i></a>
 @include('layouts.script')
 </body>
