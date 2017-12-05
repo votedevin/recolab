@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-	
+	Home Edit
 @endsection
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -14,6 +14,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<style>
+    .modal-backdrop{
+       z-index: 0;
+     }
+</style>
 @section('breadcrumbs')
 
 	<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

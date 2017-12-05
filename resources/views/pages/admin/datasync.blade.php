@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-    Showing Themes
+    Data Sync
 @endsection
 
 @php

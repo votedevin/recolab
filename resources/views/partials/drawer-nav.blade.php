@@ -46,6 +46,10 @@
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">mode_edit</i>
 				Home Edit
 			</a>
+			<a class="mdl-navigation__link {{ Request::is('menu_edit') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/menu_edit') }}">
+				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">format_list_bulleted</i>
+				Menu Edit
+			</a>
 			<a class="mdl-navigation__link {{ Request::is('datasync') ? 'mdl-navigation__link--current' : null }}" href="{{ url('/datasync') }}">
 				<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">perm_data_setting</i>
 				Data Sync

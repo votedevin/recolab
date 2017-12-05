@@ -21,9 +21,6 @@
   h3{
     font-family: "Open Sans";
   }
-  a{
-    color: #0facf3 !important;
-  }
 </style>
   <body>
   @include('layouts.topbar')

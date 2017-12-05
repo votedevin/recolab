@@ -180,4 +180,14 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function ()
 
 	Route::any('upload', 'PostsController@upload');
 
+	//Menu Edit
+	Route::get('/menu_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'MenuController@index'
+	]);
+
+	Route::any('menu_create', 'MenuController@create');
+	Route::any('menu_update', 'MenuController@store');
+	Route::any('menu_delete', 'MenuController@delete');
+
 });
