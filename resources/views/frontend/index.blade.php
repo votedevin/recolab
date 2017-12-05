@@ -56,72 +56,98 @@
             <div class="row text-center">
             <button id="searchbutton" class="btn btn-round btn-white" style="font-size: 20px;border: 0;"><i class="fa fa-sliders"></i> Filter</button>
             </div>
-            <div class="text-center gap-multiline-items-2" id="filter_button" data-shuffle="filter">
-              <a href="/" class="btn btn-outline btn-info entity_type">All</a>
+            <div class="text-center gap-multiline-items-2" id="filter_button" style="display: none;">
+              <a href="/" class="btn btn-outline btn-danger entity_type">All</a>
               @foreach($entity_types as $entity_type)
-              <a href="type_{{$entity_type->type}}" class="btn btn-outline btn-info entity_type">{{$entity_type->type}}</a>
+                <a href="type_{{$entity_type->type}}" class="btn btn-outline btn-info">{{$entity_type->type}}</a>
               @endforeach
               @foreach($facet_types as $facet_type)
-              <a href="type_{{$facet_type->type}}" class="btn btn-outline btn-info entity_type">{{$facet_type->type}}</a>
+              <a href="type_{{$facet_type->type}}" class="btn btn-outline btn-success">{{$facet_type->type}}</a>
               @endforeach
+              @foreach($resource_types as $resource_type)
+              <a href="type_{{$resource_type->type}}" class="btn btn-outline btn-warning">{{$resource_type->type}}</a>
+              @endforeach
+
             </div>
             
             <br><br>
           <div class="infinite-scroll">  
-          <div class="row gap-y text-center"  data-shuffle="list">
-          
-             @foreach($entities as $entity)
-              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$entity->type}}">
-                <a class="portfolio">
-                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(193,191,234,1) 100%);">
-                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$entity->name}}</strong></h3>
-                    <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
-                    <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($entity->description, 100)}}</p>
+            <div class="row gap-y text-center">
+            
+               @foreach($entities as $key => $entity)
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="-10">
+                  <a class="portfolio">
+                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(193,191,234,1) 100%);">
+                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($entity->name, 100)}}</strong></h3>
+                      <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
+                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($entity->description, 70)}}</p>
+                        <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
+                            @if($entity->website!='')
+                              <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
+                            @endif
+                            @if($entity->get_involved!='')
+                              <a class="btn btn-sm btn-circular btn-warning" href="//{{$entity->get_involved}}" style="margin-right: 3px;"><img src="images/engage-involved-join-participate-share-37d5c530994f0c8a-512x512.png" width="30" height="30"></a></i></a>
+                            @endif
+                            @if($entity->rss!='')
+                              <a class="social-rss btn btn-sm btn-circular btn-danger" href="//{{$entity->rss}}" style="margin-right: 3px;"><i class="fa fa-rss"></i></a>
+                            @endif
+                            @if($entity->twitter!='')
+                              <a class="btn btn-sm btn-circular btn-primary social-twitter" href="//{{$entity->twitter}}" style="margin-right: 3px;"><i class="fa fa-twitter"></i></a>
+                            @endif
+                        </div>
+                        <div class="row">
+                          <a class="fw-600 fs-12" href="/entity_{{$entity->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        </div>
+                    </div> 
+                  </a>
+                </div>
+                @endforeach
+                @foreach($facets as $key => $facet)
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="150">
+                  <a class="portfolio">
+                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
+                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($facet->name,70)}}</strong></h3>
+                      <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #43cea2 0%, #185a9d 100%);">{{$facet->type}}</button>
+                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($facet->description, 100)}}</p>
+                        <div class="row">
+                          <a class="fw-600 fs-12" href="/facet_{{$facet->id}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        </div>
+                    </div> 
+                  </a>
+                </div>
+                @endforeach
+                @foreach($resources as $key => $resource)
+                @if($resource->id!='')
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="300">
+                  <a class="portfolio">
+                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);">
+                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($resource->name, 70)}}</strong></h3>
+                      <button class="btn btn-xs btn-round btn-danger" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);">{{$resource->type}}</button>
+                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($resource->description, 100)}}</p>
                       <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
-                          @if($entity->website!='')
-                            <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
-                          @endif
-                          @if($entity->get_involved!='')
-                            <a class="btn btn-sm btn-circular btn-warning" href="//{{$entity->get_involved}}" style="margin-right: 3px;"><img src="images/engage-involved-join-participate-share-37d5c530994f0c8a-512x512.png" width="30" height="30"></a></i></a>
-                          @endif
-                          @if($entity->rss!='')
-                            <a class="social-rss btn btn-sm btn-circular btn-danger" href="//{{$entity->rss}}" style="margin-right: 3px;"><i class="fa fa-rss"></i></a>
-                          @endif
-                          @if($entity->twitter!='')
-                            <a class="btn btn-sm btn-circular btn-primary social-twitter" href="//{{$entity->twitter}}" style="margin-right: 3px;"><i class="fa fa-twitter"></i></a>
-                          @endif
+                        @if($resource->link!='')
+                          <a href="//{{$resource->link}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
+                        @endif
                       </div>
                       <div class="row">
-                        <a class="fw-600 fs-12" href="/entity_{{$entity->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        <a class="fw-600 fs-12" href="/resource_{{$resource->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                       </div>
-                  </div> 
-                </a>
-              </div>
-              @endforeach
-              @foreach($facets as $facet)
-              <div class="col-12 col-md-6 col-lg-4" data-shuffle="item" data-groups="{{$facet->type}}">
-                <a class="portfolio">
-                  <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
-                    <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{$facet->name}}</strong></h3>
-                    <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #43cea2 0%, #185a9d 100%);">{{$facet->type}}</button>
-                    <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($facet->description, 100)}}</p>
-                      <div class="row">
-                        <a class="fw-600 fs-12" href="/facet_{{$facet->id}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
-                      </div>
-                  </div> 
-                </a>
-              </div>
-              @endforeach
-              <!--  -->
-              <div class="row text-center">
-                <ul class="pagination">
-                {{ $entities->links() }}
-                {{ $facets->links() }}
-                </ul>
-              </div>
+                    </div> 
+                  </a>
+                </div>
+                @endif
+                @endforeach
+                <!--  -->
+                <div class="row text-center">
+                  <ul class="pagination">
+                  {{ $entities->links() }}
+                  {{ $facets->links() }}
+                  {{ $resources->links() }}
+                  </ul>
+                </div>
 
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -136,7 +162,6 @@
 <script src="js/jquery.jscroll.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  $('#filter_button').toggle();
   $('#searchbutton').click(function() {
     $('#filter_button').toggle();
   });

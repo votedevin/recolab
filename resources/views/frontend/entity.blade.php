@@ -35,18 +35,12 @@
       <div class="container">
         <div class="row h-half">
           <div class="col-12 text-center align-self-center">
-            <h1 class="fs-50 fw-600 lh-15 hidden-sm-down"><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
-            <h1 class="fs-35 fw-600 lh-15 hidden-md-up"><br><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
-            <br>
-            <p class="fs-20 hidden-sm-down">{!! $posts->body  !!}</p>
-            <p class="fs-16 hidden-md-up">{!! $posts->body  !!}</p>
-
-            <br>
             
-            <form class="form-inline form-glass form-round justify-content-center" action="" method="post" target="_blank">
+            <form class="form-inline form-glass form-round justify-content-center" action="/search_find" method="post">
               <div class="input-group" style="width: 50%">
                 <span class="input-group-addon"><i class="fa fa-search" style="font-size: 20px;"></i></span>
-                <input type="text" class="form-control" placeholder="Search ..." style="font-size: 20px;">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="text" class="form-control" placeholder="Search ..." style="font-size: 20px;" name="find"/>
               </div>
             </form>
           </div>
@@ -69,12 +63,15 @@
               <button id="searchbutton" class="btn btn-round btn-white" style="font-size: 20px;border: 0;"><i class="fa fa-sliders"></i> Filter</button>
             </div>
             <div class="text-center gap-multiline-items-2" id="filter_button" data-shuffle="filter">
-              <a href="/" class="btn btn-outline btn-info entity_type">All</a>
+              <a href="/" class="btn btn-outline btn-danger entity_type">All</a>
               @foreach($entity_types as $entity_type)
               <a href="type_{{$entity_type->type}}" class="btn btn-outline btn-info entity_type">{{$entity_type->type}}</a>
               @endforeach
               @foreach($facet_types as $facet_type)
-              <a href="type_{{$facet_type->type}}" class="btn btn-outline btn-info entity_type">{{$facet_type->type}}</a>
+              <a href="type_{{$facet_type->type}}" class="btn btn-outline btn-success entity_type">{{$facet_type->type}}</a>
+              @endforeach
+              @foreach($resource_types as $resource_type)
+              <a href="type_{{$resource_type->type}}" class="btn btn-outline btn-warning entity_type">{{$resource_type->type}}</a>
               @endforeach
             </div>
             <br>
@@ -174,7 +171,7 @@
                 <p class="text-center"><strong>Entities</strong></p>             
                   @foreach($sub_entities as $sub_entity)
                     @if($sub_entity->entity_name!='')
-                      <p><a href="/entity_{{$sub_entity->entity_name}}">{{$sub_entity->entity_name}}</a> - <code>{{$sub_entity->entity_type}}</code></p>
+                      <p><a href="/entity_{{$sub_entity->entity_name}}" style="color: #0facf3;">{{$sub_entity->entity_name}}</a> - <code>{{$sub_entity->entity_type}}</code></p>
                     @endif
                   @endforeach             
               <hr>
@@ -182,7 +179,7 @@
                 <p class="text-center"><strong>Facets</strong></p>
                   @foreach($sub_facets as $sub_facet)
                     @if($sub_facet->facets_name!='')
-                      <p><a href="facet_{{$sub_facet->facets_id}}">{{$sub_facet->facets_name}}</a> - <code>{{$sub_facet->facets_type}}</code></p>
+                      <p><a href="facet_{{$sub_facet->facets_id}}" style="color: #0facf3;">{{$sub_facet->facets_name}}</a> - <code>{{$sub_facet->facets_type}}</code></p>
                     @endif
                   @endforeach
               <hr>
@@ -190,7 +187,7 @@
                 <p class="text-center"><strong>Resources</strong></p>
                   @foreach($sub_resources as $sub_resource)
                     @if($sub_resource->resources_name!='')
-                      <p><a href="resource_{{$sub_resource->resources_name}}">{{$sub_resource->resources_name}}</a> - <code>{{$sub_resource->resources_type}}</code></p>
+                      <p><a href="resource_{{$sub_resource->resources_name}}" style="color: #0facf3;">{{$sub_resource->resources_name}}</a> - <code>{{$sub_resource->resources_type}}</code></p>
                     @endif
                   @endforeach
               </div>
@@ -214,22 +211,6 @@ $(document).ready(function(){
     $('#filter_button').toggle();
   });
 });
-</script>
-<script>
-      
-        // $('.entity_type').on("click", function(){
-        //   $.ajax({
-        //     type: "GET",
-        //     url : './entitytype',
-        //     data: {
-        //       entity_type: $(this).text()
-        //     },
-        //     success: function(result){
-        //       $('html').html(result);
-        //     }
-        //   });
-        // });
-
 </script>
 <script>
 var slideIndex = 1;

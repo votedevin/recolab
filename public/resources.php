@@ -150,6 +150,8 @@
 								$name = str_replace("'","\'",$record['fields']['Name']);
 								$description = str_replace("'","\'",$record['fields']['Description']);
 								$link = str_replace("'","\'",$record['fields']['Link']);
+								$link = str_replace("https://","",$link);
+								$link = str_replace("http://","",$link);
 								$attachment = implode(",", $record['fields']['Attachment']);
 								$entities = implode(",", $record['fields']['Entities']);
 								$facets = implode(",", $record['fields']['Facets']);
