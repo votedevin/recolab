@@ -74,7 +74,7 @@
                       </div>
                       <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($entity->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($entity->description, 80)}}</p>
+                      <p class="card-text">{{str_limit($entity->description, 112)}}</p>
                       <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                         <div class="col-sm-6 p-0 text-left"> 
                             @if($entity->website!='')
@@ -108,7 +108,7 @@
                       </div>
                       <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($facet->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($facet->description, 80)}}</p>
+                      <p class="card-text">{{str_limit($facet->description, 112)}}</p>
                         <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                           <div class="col-sm-6 p-0"></div>
                           <div class="col-sm-6 p-0">
@@ -129,7 +129,7 @@
                     </div>
                     <h3 style="font-size: 20px;padding: 5%;"><strong>{{str_limit($resource->name, 50)}}</strong></h3>
                     <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                    <p class="card-text">{{str_limit($resource->description, 80)}}</p>
+                    <p class="card-text">{{str_limit($resource->description, 112)}}</p>
                     <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                       <div class="col-sm-6 p-0  text-left">
                         @if($resource->link!='')
