@@ -78,7 +78,6 @@
             <div class="col-12 col-lg-8">
               <div class="bg-lighter p-20">
                 <h3><strong>{{$resource->name}}</strong> <code style="font-size: initial;">{{$resource->type}}</code></h3>
-                <hr>
                 <p>{{$resource->description}}</p>
               </div>
             </div>

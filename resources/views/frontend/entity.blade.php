@@ -80,6 +80,7 @@
                 <h3><strong>{{$entity->name}} </strong>@if($entity->abbreviation!='')({{$entity->abbreviation}})@endif <code style="font-size: initial;">{{$entity->type}}</code></h3>
                 
                 <div class="row pl-20">
+                <p><strong>Tags:</strong>&nbsp</p>
                 @foreach($facets as $facet)
                   <a href="/facet_{{$facet->facets_id}}" style="display: inline;">{{$facet->facets_name}}, </a>
                 @endforeach
@@ -99,32 +100,33 @@
                   @endif
                 </div>
                 <p>{{$entity->description}}</p>
-                <p><strong>Usability </strong> : @for($i=1; $i<=$entity->usability; $i++)
+                <p><strong>Usability:</strong> @for($i=1; $i<=$entity->usability; $i++)
                   <span class="fa fa-star" data-rating="{{$i}}"></span>
                 @endfor</p>
-                <p><strong>Maintenance </strong> : {{$entity->status}}</p>
-                <p><strong>Geographic Research </strong> :</p>
-                @if($entity->locations!='')
+                <p><strong>Maintenance:</strong> {{$entity->status}}</p>
+                <p><strong>Geographic Research:</strong> {{$entity->geographic_reach}}</p>
+                <p><strong>Locations:</strong>
                   @foreach($locations as $location)
-                    <p style="display: inline;">{{$location->name}}: {{$location->address}}</p>
+                    @if($entity->locations!='')
+                      {{$location->name}} {{$location->address}}
+                    @endif
                   @endforeach
-                @endif
-                <p style="display: inline;">{{$entity->geographic_reach}}</p>
-                <p><strong>Additional Info </strong> :</p>
+                  </p>
+                <p><strong>Additional Info:</strong> {{$entity->additional_information}}</p>
               </div>
               <div class="bg-lighter p-20 mt-20">
                 <h3>Meta</h3>
                 <div class="row">
                   <div class="col-sm-6">
-                    <p><strong>Date Added</strong> : {{$entity->date_added}}</p>
-                    <p><strong>Date Updated</strong> : </p>
-                    <p><strong>Source</strong> : {{$entity->source}}</p>
-                    <p><strong>Source Date Added</strong> : {{$entity->source_date_added}}</p>
+                    <p><strong>Date Added:</strong> {{$entity->date_added}}</p>
+                    <p><strong>Date Updated:</strong></p>
+                    <p><strong>Source:</strong> {{$entity->source}}</p>
+                    <p><strong>Source Date Added:</strong> {{$entity->source_date_added}}</p>
                   </div>
                   <div class="col-sm-6">
-                    <p><strong>Slug</strong> : {{$entity->slug}}</p>
-                    <p><strong>IID</strong> : {{$entity->iid}}</p>
-                    <p><strong>UID</strong> : {{$entity->uid}}</p>
+                    <p><strong>Slug:</strong> {{$entity->slug}}</p>
+                    <p><strong>IID:</strong> {{$entity->iid}}</p>
+                    <p><strong>UID:</strong> {{$entity->uid}}</p>
                   </div>
                 </div>
               </div>

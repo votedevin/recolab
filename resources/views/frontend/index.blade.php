@@ -72,9 +72,9 @@
                           <a href="type_{{$entity->type}}" class="btn btn-outline btn-primary m-0 w-full"  style="border-radius: 0;">{{$entity->type}}</a>
                         </div>
                       </div>
-                      <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($entity->name,70)}}</strong></h3>
+                      <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($entity->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($entity->description, 70)}}</p>
+                      <p class="card-text">{{str_limit($entity->description, 80)}}</p>
                       <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                         <div class="col-sm-6 p-0 text-left"> 
                             @if($entity->website!='')
@@ -106,9 +106,9 @@
                           <a href="type_{{$facet->type}}" class="btn btn-outline btn-success m-0 w-full"  style="border-radius: 0;">{{$facet->type}}</a>
                         </div>
                       </div>
-                      <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($facet->name,70)}}</strong></h3>
+                      <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($facet->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($facet->description, 100)}}</p>
+                      <p class="card-text">{{str_limit($facet->description, 80)}}</p>
                         <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                           <div class="col-sm-6 p-0"></div>
                           <div class="col-sm-6 p-0">
@@ -127,9 +127,9 @@
                         <a href="type_{{$resource->type}}" class="btn btn-outline btn-warning m-0 w-full"  style="border-radius: 0;">{{$resource->type}}</a>
                       </div>
                     </div>
-                    <h3 style="font-size: 20px;padding: 5%;"><strong>{{str_limit($resource->name, 70)}}</strong></h3>
+                    <h3 style="font-size: 20px;padding: 5%;"><strong>{{str_limit($resource->name, 50)}}</strong></h3>
                     <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                    <p class="card-text">{{str_limit($resource->description, 100)}}</p>
+                    <p class="card-text">{{str_limit($resource->description, 80)}}</p>
                     <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
                       <div class="col-sm-6 p-0  text-left">
                         @if($resource->link!='')
