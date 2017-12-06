@@ -148,7 +148,9 @@
 								echo '</li>';
 
 								$name = str_replace("'","\'",$record['fields']['Name']);
+								$name =  mb_convert_encoding($name, "HTML-ENTITIES", "UTF-8");
 								$description = str_replace("'","\'",$record['fields']['Description']);
+								$description =  mb_convert_encoding($description, "HTML-ENTITIES", "UTF-8");
 								$facets = implode(", ", $record['fields']['Facets']);
 								$entities = implode(", ", $record['fields']['Entities']);
 								$resources = implode(", ", $record['fields']['Resources']);

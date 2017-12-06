@@ -150,6 +150,7 @@
 								$name = str_replace("'","\'",$record['fields']['Name']);
 								$address= str_replace("'","\'",$record['fields']['Address']);
 								$description = str_replace("'","\'",$record['fields']['Description']);
+								$description =  mb_convert_encoding($description, "HTML-ENTITIES", "UTF-8");
 								$entity = implode(",", $record['fields']['Entity']);
 
 								foreach ($images as $image) {

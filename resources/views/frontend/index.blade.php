@@ -66,7 +66,7 @@
             
                @foreach($entities as $key => $entity)
                 <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
-                    <div class="shadow-2 card-block p-0" alt="demo helpato landing" style="height: 270px;border: 5px solid #0facf3;">
+                    <div class="shadow-2 card-block p-0" alt="demo helpato landing" style="height: 280px;border: 5px solid #0facf3;">
                       <div class="row m-0">
                         <div class="col-sm-12 p-0">
                           <a href="type_{{$entity->type}}" class="btn btn-outline btn-primary m-0 w-full"  style="border-radius: 0;">{{$entity->type}}</a>
@@ -74,8 +74,8 @@
                       </div>
                       <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($entity->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($entity->description, 112)}}</p>
-                      <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                      <p class="card-text" style="padding-left: 5px; padding-right: 5px;">{{str_limit($entity->description, 110)}}</p>
+                      <div class="row" style="position: absolute;top: 255px;left: 30px;width: 91%;">
                         <div class="col-sm-6 p-0 text-left"> 
                             @if($entity->website!='')
                               <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-outline btn-primary p-5" style="width: 25%;margin-right: -5px;"><img src="images/49479-200.png" width="26" height="26"></a>
@@ -100,7 +100,7 @@
                 @endforeach
                 @foreach($facets as $key => $facet)
                 <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
-                    <div class="shadow-2 hover-shadow-5 card-block  p-0" alt="demo helpato landing" style="height: 270px; border: 5px solid #46da60;">
+                    <div class="shadow-2 hover-shadow-5 card-block  p-0" alt="demo helpato landing" style="height: 280px; border: 5px solid #46da60;">
                       <div class="row m-0">
                         <div class="col-sm-12 p-0">
                           <a href="type_{{$facet->type}}" class="btn btn-outline btn-success m-0 w-full"  style="border-radius: 0;">{{$facet->type}}</a>
@@ -108,8 +108,8 @@
                       </div>
                       <h3 style="font-size: 20px; padding: 5%;"><strong>{{str_limit($facet->name,50)}}</strong></h3>
                       <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                      <p class="card-text">{{str_limit($facet->description, 112)}}</p>
-                        <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                      <p class="card-text" style="padding-left: 5px; padding-right: 5px;">{{str_limit($facet->description, 110)}}</p>
+                        <div class="row" style="position: absolute;top: 255px;left: 30px;width: 91%;">
                           <div class="col-sm-6 p-0"></div>
                           <div class="col-sm-6 p-0">
                             <a class="btn btn-outline btn-success m-0 w-full" href="/facet_{{$facet->id}}">Read more</a>
@@ -121,7 +121,7 @@
                 @foreach($resources as $key => $resource)
                 @if($resource->id!='')
                 <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
-                  <div class="shadow-2 hover-shadow-5 card-block p-0" alt="demo helpato landing" style="height: 270px;border: 5px solid #ffbe00;">
+                  <div class="shadow-2 hover-shadow-5 card-block p-0" alt="demo helpato landing" style="height: 280px;border: 5px solid #ffbe00;">
                     <div class="row m-0">
                       <div class="col-sm-12 p-0">
                         <a href="type_{{$resource->type}}" class="btn btn-outline btn-warning m-0 w-full"  style="border-radius: 0;">{{$resource->type}}</a>
@@ -129,8 +129,8 @@
                     </div>
                     <h3 style="font-size: 20px;padding: 5%;"><strong>{{str_limit($resource->name, 50)}}</strong></h3>
                     <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
-                    <p class="card-text">{{str_limit($resource->description, 112)}}</p>
-                    <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                    <p class="card-text" style="padding-left: 5px; padding-right: 5px;">{{str_limit($resource->description, 110)}}</p>
+                    <div class="row" style="position: absolute;top: 255px;left: 30px;width: 91%;">
                       <div class="col-sm-6 p-0  text-left">
                         @if($resource->link!='')
                           <a href="//{{$resource->link}}" target="_blank" class="btn btn-sm btn-outline btn-warning p-5" style="width: 25%;margin-right: -5px;"><img src="images/49479-200.png" width="26" height="26"></a>
