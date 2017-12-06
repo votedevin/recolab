@@ -16,31 +16,21 @@
   @include('layouts.topbar')
 
     <!-- Header -->
-    <header class="header fadeout header-inverse pb-0 h-halfscreen" style="background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);">
-      <canvas class="constellation"></canvas>
-
-      <div class="container">
-        <div class="row h-half">
-          <div class="col-12 text-center align-self-center">
-            <h1 class="fs-50 fw-600 lh-15 hidden-sm-down"><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
-            <h1 class="fs-35 fw-600 lh-15 hidden-md-up"><br><span class="text-primary" data-type="{{$posts->title}}"></span></h1>
+    <header class="header header-inverse bg-fixed" style="background-image: url(images/bg-laptop.jpg)" data-overlay="8">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-12 col-lg-8 offset-lg-2">
+            <h1>{{$posts->title}}</h1>
             <br>
-            <p class="fs-20 hidden-sm-down">{!! $posts->body  !!}</p>
-            <p class="fs-16 hidden-md-up">{!! $posts->body  !!}</p>
-
+            <p class="fs-18 opacity-70">{!! $posts->body  !!}</p>
             <br>
-            
             <form class="form-inline form-glass form-round justify-content-center" action="/search_find" method="post">
-              <div class="input-group" style="width: 50%">
+              <div class="input-group" style="width: 70%">
                 <span class="input-group-addon"><i class="fa fa-search" style="font-size: 20px;"></i></span>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="text" class="form-control" placeholder="Search ..." style="font-size: 20px;" name="find"/>
               </div>
             </form>
-          </div>
-
-          <div class="col-12 align-self-end text-center pb-70">
-            <!-- <a class="scroll-down-2 scroll-down-inverse" href="#" data-scrollto="section-demo"><span></span></a> -->
           </div>
         </div>
       </div>
@@ -75,65 +65,91 @@
             <div class="row gap-y text-center">
             
                @foreach($entities as $key => $entity)
-                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="-10">
-                  <a class="portfolio">
-                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(193,191,234,1) 100%);">
-                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($entity->name, 100)}}</strong></h3>
-                      <button class="btn btn-xs btn-round btn-warning" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(rgb(241, 231, 103) 0%, rgb(254, 182, 69) 100%);">{{$entity->type}}</button>
-                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($entity->description, 70)}}</p>
-                        <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
+                    <div class="shadow-2 card-block p-0" alt="demo helpato landing" style="height: 270px;border: 5px solid #0facf3;">
+                      <div class="row m-0">
+                        <div class="col-sm-6 p-0">
+                          <a href="entity" class="btn btn-outline btn-primary m-0 w-full" style="border-radius: 0;">Entity</a>
+                        </div>
+                        <div class="col-sm-6 p-0">
+                          <a href="type_{{$entity->type}}" class="btn btn-outline btn-primary m-0 w-full"  style="border-radius: 0;">{{str_limit($entity->type,10)}}</a>
+                        </div>
+                      </div>
+                      <h3 style="font-size: 20px; padding: 7%;"><strong>{{str_limit($entity->name,70)}}</strong></h3>
+                      <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
+                      <p class="card-text">{{str_limit($entity->description, 70)}}</p>
+                      <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                        <div class="col-sm-6 p-0 text-left"> 
                             @if($entity->website!='')
-                              <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
+                              <a href="//{{$entity->website}}" target="_blank" class="btn btn-sm btn-outline btn-primary p-5" style="width: 25%;margin-right: -5px;"><img src="images/49479-200.png" width="26" height="26"></a>
                             @endif
                             @if($entity->get_involved!='')
-                              <a class="btn btn-sm btn-circular btn-warning" href="//{{$entity->get_involved}}" style="margin-right: 3px;"><img src="images/engage-involved-join-participate-share-37d5c530994f0c8a-512x512.png" width="30" height="30"></a></i></a>
+                              <a class="btn btn-sm btn-outline btn-primary p-5" href="//{{$entity->get_involved}}" style="width:25%;"><img src="images/engage-involved-join-participate-share-37d5c530994f0c8a-512x512.png" width="26" height="26"></a>
                             @endif
                             @if($entity->rss!='')
-                              <a class="social-rss btn btn-sm btn-circular btn-danger" href="//{{$entity->rss}}" style="margin-right: 3px;"><i class="fa fa-rss"></i></a>
+                              <a class="social-rss btn btn-sm btn-outline btn-primary p-5" href="//{{$entity->rss}}" style="width: 25%;"><i class="fa fa-rss"></i></a>
                             @endif
                             @if($entity->twitter!='')
-                              <a class="btn btn-sm btn-circular btn-primary social-twitter" href="//{{$entity->twitter}}" style="margin-right: 3px;"><i class="fa fa-twitter"></i></a>
+                              <a class="btn btn-sm btn-outline btn-primary social-twitter p-5" href="//{{$entity->twitter}}"  style="width: 25%;"><i class="fa fa-twitter"></i></a>
                             @endif
                         </div>
-                        <div class="row">
-                          <a class="fw-600 fs-12" href="/entity_{{$entity->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                        <div class="col-sm-6 p-0">
+                          <a class="btn btn-outline btn-primary m-0 w-full" href="/entity_{{$entity->name}}">Read more</a>
                         </div>
+                      </div>
                     </div> 
-                  </a>
+
                 </div>
                 @endforeach
                 @foreach($facets as $key => $facet)
-                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="150">
-                  <a class="portfolio">
-                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);">
-                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($facet->name,70)}}</strong></h3>
-                      <button class="btn btn-xs btn-round btn-primary" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #43cea2 0%, #185a9d 100%);">{{$facet->type}}</button>
-                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($facet->description, 100)}}</p>
-                        <div class="row">
-                          <a class="fw-600 fs-12" href="/facet_{{$facet->id}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
+                    <div class="shadow-2 hover-shadow-5 card-block  p-0" alt="demo helpato landing" style="height: 270px; border: 5px solid #46da60;">
+                      <div class="row m-0">
+                        <div class="col-sm-6 p-0">
+                          <a href="facet" class="btn btn-outline btn-success m-0 w-full" style="border-radius: 0;">Facet</a>
+                        </div>
+                        <div class="col-sm-6 p-0">
+                          <a href="type_{{$facet->type}}" class="btn btn-outline btn-success m-0 w-full"  style="border-radius: 0;">{{str_limit($facet->type,10)}}</a>
+                        </div>
+                      </div>
+                      <h3 style="font-size: 20px; padding: 7%;"><strong>{{str_limit($facet->name,70)}}</strong></h3>
+                      <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
+                      <p class="card-text">{{str_limit($facet->description, 100)}}</p>
+                        <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                          <div class="col-sm-6 p-0"></div>
+                          <div class="col-sm-6 p-0">
+                            <a class="btn btn-outline btn-success m-0 w-full" href="/facet_{{$facet->id}}">Read more</a>
+                          </div>
                         </div>
                     </div> 
-                  </a>
                 </div>
                 @endforeach
                 @foreach($resources as $key => $resource)
                 @if($resource->id!='')
-                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="300">
-                  <a class="portfolio">
-                    <div class="shadow-2 hover-shadow-5 card-block" alt="demo helpato landing" style="height: 250px; background-image: linear-gradient(to bottom, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);">
-                      <h3 style="font-size: 20px;color: #000000;font-family: sans-serif;"><strong>{{str_limit($resource->name, 70)}}</strong></h3>
-                      <button class="btn btn-xs btn-round btn-danger" style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, rgba(255,93,177,1) 0%, rgba(239,1,124,1) 100%);">{{$resource->type}}</button>
-                      <p class="card-text" style="font-weight: 600;color: #0275d8;">{{str_limit($resource->description, 100)}}</p>
-                      <div class="row" style="height: 20%;position: absolute;top: 210px;left: 40px;">
+                <div class="col-12 col-md-6 col-lg-4"  data-aos="fade-up" data-aos-delay="0">
+                  <div class="shadow-2 hover-shadow-5 card-block p-0" alt="demo helpato landing" style="height: 270px;border: 5px solid #ffbe00;">
+                    <div class="row m-0">
+                      <div class="col-sm-6 p-0">
+                        <a href="resource" class="btn btn-outline btn-warning m-0 w-full" style="border-radius: 0;">Resource</a>
+                      </div>
+                      <div class="col-sm-6 p-0">
+                        <a href="type_{{$resource->type}}" class="btn btn-outline btn-warning m-0 w-full"  style="border-radius: 0;">{{str_limit($resource->type, 10)}}</a>
+                      </div>
+                    </div>
+                    <h3 style="font-size: 20px;padding: 7%;"><strong>{{str_limit($resource->name, 70)}}</strong></h3>
+                    <hr style="color: white;font-weight: 900;font-size: 13px;background-image: linear-gradient(to bottom, #b5b9bf 0%, #b5b9bf 100%); margin-left: 10px;margin-right: 10px; height: 1px; margin: 1rem;"></hr>
+                    <p class="card-text">{{str_limit($resource->description, 100)}}</p>
+                    <div class="row" style="position: absolute;top: 245px;left: 30px;width: 91%;">
+                      <div class="col-sm-6 p-0  text-left">
                         @if($resource->link!='')
-                          <a href="//{{$resource->link}}" target="_blank" class="btn btn-sm btn-circular btn-success" style="margin-right: 3px;"><img src="images/49479-200.png" width="30" height="30"></a>
+                          <a href="//{{$resource->link}}" target="_blank" class="btn btn-sm btn-outline btn-warning p-5" style="width: 25%;margin-right: -5px;"><img src="images/49479-200.png" width="26" height="26"></a>
                         @endif
                       </div>
-                      <div class="row">
-                        <a class="fw-600 fs-12" href="/resource_{{$resource->name}}" style="color:#ffffff;position: absolute;top: 225px;right: 40px;">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                      <div class="col-sm-6 p-0">
+                        <a class="btn btn-outline btn-warning m-0 w-full" href="/resource_{{$resource->name}}">Read more</a>
                       </div>
                     </div> 
-                  </a>
+                  </div>
                 </div>
                 @endif
                 @endforeach

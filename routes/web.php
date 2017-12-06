@@ -29,6 +29,12 @@ Route::get('resource_{id}', 'IndexController@resource_link');
 
 Route::get('type_{id}', 'IndexController@type');
 
+Route::get('entity', 'IndexController@entity');
+
+Route::get('facet', 'IndexController@facet');
+
+Route::get('resource', 'IndexController@resource');
+
 Route::match(['get', 'post'], '/search_find', [
     'uses'          => 'IndexController@search'
 ]);

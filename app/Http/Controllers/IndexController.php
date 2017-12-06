@@ -23,10 +23,49 @@ class IndexController extends Controller
         $menus=DB::table('menu')->get();
         $entity_types=DB::table('entity')->distinct()-> get(['type']);
         $facet_types=DB::table('facets')->distinct()-> get(['type']);
-        $resource_types=DB::table('resources')->distinct()-> get(['type']);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
     	$entities = DB::table('entity')->orderBy('name','asc')->paginate(3);
-        $facets = DB:: table('facets')->paginate(3);
-        $resources = DB:: table('resources')->where('published', '=', '1')->paginate(3);
+        $facets = DB:: table('facets')->orderBy('name','asc')->paginate(3);
+        $resources = DB:: table('resources')->where('published', '=', '1')->orderBy('name','asc')->paginate(3);
+        return view('frontend.index', compact('posts', 'menus', 'entity_types', 'facet_types', 'resource_types', 'entities', 'facets', 'resources'));
+    }
+
+    public function entity()
+    {
+        $posts=DB::table('posts')->first();
+        $menus=DB::table('menu')->get();
+        $entity_types=DB::table('entity')->distinct()-> get(['type']);
+        $facet_types=DB::table('facets')->distinct()-> get(['type']);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
+        $entities = DB::table('entity')->orderBy('name','asc')->paginate(3);
+        $facets = DB:: table('facets')->where('id', '=', '0')->paginate(3);
+        $resources = DB:: table('resources')->where('id', '=', '0')->where('published', '=', '1')->paginate(3);
+        return view('frontend.index', compact('posts', 'menus', 'entity_types', 'facet_types', 'resource_types', 'entities', 'facets', 'resources'));
+    }
+
+    public function facet()
+    {
+        $posts=DB::table('posts')->first();
+        $menus=DB::table('menu')->get();
+        $entity_types=DB::table('entity')->distinct()-> get(['type']);
+        $facet_types=DB::table('facets')->distinct()-> get(['type']);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
+        $entities = DB::table('entity')->where('id', '=', '0')->paginate(3);
+        $facets = DB:: table('facets')->orderBy('name','asc')->paginate(3);
+        $resources = DB:: table('resources')->where('id', '=', '0')->where('published', '=', '1')->paginate(3);
+        return view('frontend.index', compact('posts', 'menus', 'entity_types', 'facet_types', 'resource_types', 'entities', 'facets', 'resources'));
+    }
+
+    public function resource()
+    {
+        $posts=DB::table('posts')->first();
+        $menus=DB::table('menu')->get();
+        $entity_types=DB::table('entity')->distinct()-> get(['type']);
+        $facet_types=DB::table('facets')->distinct()-> get(['type']);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
+        $entities = DB::table('entity')->where('id', '=', '0')->orderBy('name','asc')->paginate(3);
+        $facets = DB:: table('facets')->where('id', '=', '0')->orderBy('name','asc')->paginate(3);
+        $resources = DB:: table('resources')->where('published', '=', '1')->orderBy('name','asc')->paginate(3);
         return view('frontend.index', compact('posts', 'menus', 'entity_types', 'facet_types', 'resource_types', 'entities', 'facets', 'resources'));
     }
 
@@ -37,10 +76,10 @@ class IndexController extends Controller
         $menus=DB::table('menu')->get();
         $entity_types=DB::table('entity')->distinct()-> get(['type']);
         $facet_types=DB::table('facets')->distinct()-> get(['type']);
-        $resource_types=DB::table('resources')->distinct()-> get(['type']);
-        $entities = DB::table('entity')->where('type', $type)->paginate(3);
-        $facets=DB::table('facets')->where('type', $type)->paginate(3);
-        $resources=DB::table('resources')->where('published', '=', '1')->where('type', $type)->paginate(3);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
+        $entities = DB::table('entity')->where('type', $type)->orderBy('name','asc')->paginate(3);
+        $facets=DB::table('facets')->where('type', $type)->orderBy('name','asc')->paginate(3);
+        $resources=DB::table('resources')->where('published', '=', '1')->where('type', $type)->orderBy('name','asc')->paginate(3);
         return view('frontend.index', compact('posts', 'menus', 'entity_types', 'facet_types', 'resource_types','entities', 'facets', 'resources'));
 
     }
@@ -52,7 +91,7 @@ class IndexController extends Controller
         $menus=DB::table('menu')->get();
         $entity_types = DB::table('entity')->distinct()-> get(['type']);
         $facet_types = DB::table('facets')->distinct()-> get(['type']);
-        $resource_types=DB::table('resources')->distinct()-> get(['type']);
+        $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
         $entities = DB::table('entity')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(3);
         $facets = DB::table('facets')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(3);
         $resources = DB::table('resources')->where('published', '=', '1')->where('name', 'like', '%'.$find.'%')->orwhere('description', 'like', '%'.$find.'%')->paginate(3);
