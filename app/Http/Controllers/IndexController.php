@@ -126,7 +126,7 @@ class IndexController extends Controller
         $facet_types=DB::table('facets')->distinct()-> get(['type']);
         $resource_types=DB::table('resources')->where('published', '=', '1')->distinct()-> get(['type']);
         $facet = DB::table('facets')->where('id', $id)->first();
-        $sub_entities = DB::table('facets')->where('facets.id', '=', $id)->leftJoin('entity', 'facets.entities', 'like', DB::raw("concat('%', entity.entity_id, '%')"))->select(DB::raw('entity.name as entity_name'), DB::raw('entity.type as entity_type'))->orderBy('enttity_type','desc')->get();
+        $sub_entities = DB::table('facets')->where('facets.id', '=', $id)->leftJoin('entity', 'facets.entities', 'like', DB::raw("concat('%', entity.entity_id, '%')"))->select(DB::raw('entity.name as entity_name'), DB::raw('entity.type as entity_type'))->orderBy('entity_type','desc')->get();
 
         $sub_facets = DB::table('facets')->where('facets.id', '=', $id)->leftJoin('facets as second', 'facets.facets', 'like', DB::raw("concat('%', second.facets_id, '%')"))->select(DB::raw('second.id as facets_id'), DB::raw('second.name as facets_name'), DB::raw('second.type as facets_type'))->orderBy('facets_type','desc')->get();
 
