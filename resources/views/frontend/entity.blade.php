@@ -105,10 +105,10 @@
                 @endfor</p>
                 <p><strong>Maintenance:</strong> {{$entity->status}}</p>
                 <p><strong>Geographic Research:</strong> {{$entity->geographic_reach}}</p>
-                <p><strong>Locations:</strong>
+                <p><strong>Locations:</strong><p>
                   @foreach($locations as $location)
-                    @if($entity->locations!='')
-                      {{$location->name}} {{$location->address}}
+                    @if($location->address!='')
+                      <p style="padding-left: 20px;">{{$location->name}} {{$location->address}}</p>
                     @endif
                   @endforeach
                   </p>
