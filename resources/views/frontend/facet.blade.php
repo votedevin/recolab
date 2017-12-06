@@ -78,10 +78,8 @@
           <div class="row">
             <div class="col-12 col-lg-8">
               <div class="bg-lighter p-20">
-                <h3><strong>{{$facet->name}}</strong></h3>
-                <code><strong>{{$facet->type}}</strong></code>
-                <hr>
-                <p><strong>Description</strong> - {{$facet->description}}</p>
+                <h3><strong>{{$facet->name}}</strong>  <code style="font-size: initial;">{{$facet->type}}</code></h3>
+                <p>{{$facet->description}}</p>
               </div>
             </div>
 
@@ -91,7 +89,7 @@
                 <p class="text-center"><strong>Entities</strong></p>
                 @foreach($sub_entities as $sub_entity)
                   @if($sub_entity->entity_name!='')
-                  <p><a href="/entity_{{$sub_entity->entity_name}}" style="color: #0facf3;">{{$sub_entity->entity_name}}</a> - <code>{{$sub_entity->entity_type}}</code></p>
+                  <p><a href="/entity_{{$sub_entity->entity_name}}" style="color: #0facf3;">{{$sub_entity->entity_name}}</a> <code>{{$sub_entity->entity_type}}</code></p>
                   @endif
                 @endforeach
               <hr>
@@ -99,7 +97,7 @@
                 <p class="text-center"><strong>Facets</strong></p>
                   @foreach($sub_facets as $sub_facet)
                     @if($sub_facet->facets_name!='')
-                    <p><a href="facet_{{$sub_facet->facets_id}}" style="color: #0facf3;">{{$sub_facet->facets_name}}</a> - <code>{{$sub_facet->facets_type}}</code></p>
+                    <p><a href="facet_{{$sub_facet->facets_id}}" style="color: #0facf3;">{{$sub_facet->facets_name}}</a> <code>{{$sub_facet->facets_type}}</code></p>
                     @endif
                   @endforeach
               <hr>
@@ -107,7 +105,7 @@
                 <p class="text-center"><strong>Resources</strong></p>
                  @foreach($sub_resources as $sub_resource)
                     @if($sub_resource->resources_name!='')
-                      <p><a href="resource_{{$sub_resource->resources_name}}" style="color: #0facf3;">{{$sub_resource->resources_name}}</a> - <code>{{$sub_resource->resources_type}}</code></p>
+                      <p><a href="resource_{{$sub_resource->resources_name}}" style="color: #0facf3;">{{$sub_resource->resources_name}}</a> <code>{{$sub_resource->resources_type}}</code></p>
                     @endif
                   @endforeach
               </div>

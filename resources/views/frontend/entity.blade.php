@@ -77,8 +77,8 @@
           <div class="row">
             <div class="col-12 col-lg-8">
               <div class="bg-lighter p-20">
-                <h3><strong>{{$entity->name}} </strong>@if($entity->abbreviation!='')({{$entity->abbreviation}})@endif</h3>
-                <code><strong>{{$entity->type}}</strong></code>
+                <h3><strong>{{$entity->name}} </strong>@if($entity->abbreviation!='')({{$entity->abbreviation}})@endif <code style="font-size: initial;">{{$entity->type}}</code></h3>
+                
                 <div class="row pl-20">
                 @foreach($facets as $facet)
                   <a href="/facet_{{$facet->facets_id}}" style="display: inline;">{{$facet->facets_name}}, </a>
@@ -98,37 +98,33 @@
                     <a class="btn btn-sm btn-circular btn-primary social-twitter" href="//{{$entity->twitter}}" style="margin-right: 3px;"><i class="fa fa-twitter"></i></a>
                   @endif
                 </div>
-                <hr>
-                <p><strong>Description</strong> - {{$entity->description}}</p>
-                <hr>
-                <p><strong>Usability</strong> - @for($i=1; $i<=$entity->usability; $i++)
+                <p>{{$entity->description}}</p>
+                <p><strong>Usability </strong> : @for($i=1; $i<=$entity->usability; $i++)
                   <span class="fa fa-star" data-rating="{{$i}}"></span>
                 @endfor</p>
-                <p><strong>Maintenance</strong> - {{$entity->status}}</p>
-                <hr>
-                <p><strong>Geographic Research</strong></p>
+                <p><strong>Maintenance </strong> : {{$entity->status}}</p>
+                <p><strong>Geographic Research </strong> :</p>
                 @if($entity->locations!='')
                   @foreach($locations as $location)
                     <p style="display: inline;">{{$location->name}}: {{$location->address}}</p>
                   @endforeach
                 @endif
                 <p style="display: inline;">{{$entity->geographic_reach}}</p>
-                <hr>
-                <p><strong>Additional Info</strong></p>
+                <p><strong>Additional Info </strong> :</p>
               </div>
               <div class="bg-lighter p-20 mt-20">
                 <h3>Meta</h3>
                 <div class="row">
                   <div class="col-sm-6">
-                    <p><strong>Date Added</strong> - {{$entity->date_added}}</p>
-                    <p><strong>Date Updated</strong> - </p>
-                    <p><strong>Source</strong> - {{$entity->source}}</p>
-                    <p><strong>Source Date Added</strong> - {{$entity->source_date_added}}</p>
+                    <p><strong>Date Added</strong> : {{$entity->date_added}}</p>
+                    <p><strong>Date Updated</strong> : </p>
+                    <p><strong>Source</strong> : {{$entity->source}}</p>
+                    <p><strong>Source Date Added</strong> : {{$entity->source_date_added}}</p>
                   </div>
                   <div class="col-sm-6">
-                    <p><strong>Slug</strong> - {{$entity->slug}}</p>
-                    <p><strong>IID</strong> - {{$entity->iid}}</p>
-                    <p><strong>UID</strong> - {{$entity->uid}}</p>
+                    <p><strong>Slug</strong> : {{$entity->slug}}</p>
+                    <p><strong>IID</strong> : {{$entity->iid}}</p>
+                    <p><strong>UID</strong> : {{$entity->uid}}</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +164,7 @@
                 <p class="text-center"><strong>Entities</strong></p>             
                   @foreach($sub_entities as $sub_entity)
                     @if($sub_entity->entity_name!='')
-                      <p><a href="/entity_{{$sub_entity->entity_name}}" style="color: #0facf3;">{{$sub_entity->entity_name}}</a> - <code>{{$sub_entity->entity_type}}</code></p>
+                      <p><a href="/entity_{{$sub_entity->entity_name}}" style="color: #0facf3;">{{$sub_entity->entity_name}}</a> <code>{{$sub_entity->entity_type}}</code></p>
                     @endif
                   @endforeach             
               <hr>
@@ -176,7 +172,7 @@
                 <p class="text-center"><strong>Facets</strong></p>
                   @foreach($sub_facets as $sub_facet)
                     @if($sub_facet->facets_name!='')
-                      <p><a href="facet_{{$sub_facet->facets_id}}" style="color: #0facf3;">{{$sub_facet->facets_name}}</a> - <code>{{$sub_facet->facets_type}}</code></p>
+                      <p><a href="facet_{{$sub_facet->facets_id}}" style="color: #0facf3;">{{$sub_facet->facets_name}}</a> <code>{{$sub_facet->facets_type}}</code></p>
                     @endif
                   @endforeach
               <hr>
@@ -184,7 +180,7 @@
                 <p class="text-center"><strong>Resources</strong></p>
                   @foreach($sub_resources as $sub_resource)
                     @if($sub_resource->resources_name!='')
-                      <p><a href="resource_{{$sub_resource->resources_name}}" style="color: #0facf3;">{{$sub_resource->resources_name}}</a> - <code>{{$sub_resource->resources_type}}</code></p>
+                      <p><a href="resource_{{$sub_resource->resources_name}}" style="color: #0facf3;">{{$sub_resource->resources_name}}</a> <code>{{$sub_resource->resources_type}}</code></p>
                     @endif
                   @endforeach
               </div>
